@@ -1,0 +1,58 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-dark text-light font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-semibold;
+  }
+}
+
+@layer components {
+  /* Header tube light glow animation */
+  @keyframes pulse {
+    0% { opacity: 0.1; }
+    100% { opacity: 0.25; }
+  }
+  
+  /* Cursor follower glow animation */
+  @keyframes cursorPulse {
+    0% { opacity: 0.3; box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.3); }
+    50% { opacity: 0.4; box-shadow: 0 0 25px 10px rgba(255, 255, 255, 0.35); }
+    100% { opacity: 0.35; box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.25); }
+  }
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+  }
+  .btn {
+    @apply px-6 py-2 rounded-md font-medium transition-all duration-300;
+  }
+  .btn-primary {
+    @apply bg-primary text-dark hover:bg-primary/90;
+  }
+  .btn-secondary {
+    @apply bg-secondary text-dark hover:bg-secondary/90;
+  }
+  .btn-outline {
+    @apply border border-primary text-primary hover:bg-primary/10;
+  }
+  .section {
+    @apply py-16 md:py-24;
+  }
+  .card {
+    @apply bg-dark-lighter rounded-lg p-6 transition-all duration-300 hover:bg-dark-lightest;
+  }
+  .highlight {
+    @apply text-primary;
+  }
+}

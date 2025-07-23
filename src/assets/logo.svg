@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main shape - stylized "L" for Laveesh -->
+  <path d="M6 4V28H26V22H12V4H6Z" fill="#3B82F6"/>
+  <!-- Accent detail -->
+  <path d="M16 4V16H22V10H20V14H18V4H16Z" fill="white"/>
+</svg>
