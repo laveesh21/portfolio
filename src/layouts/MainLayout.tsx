@@ -12,7 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps = { children: null }) => {
     <div className="flex flex-col min-h-screen bg-dark text-light">
       <Header />
       <main className="flex-grow bg-dark">
-        <div className="max-w-[70vw] mx-auto">
+        <div className="w-full mx-auto">
           {children || <Outlet />}
         </div>
       </main>

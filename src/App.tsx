@@ -1,6 +1,7 @@
 import './index.css'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
+import Projects from './pages/Projects'
 import Header from './components/sections/Header'
 import Footer from './components/sections/Footer'
 
@@ -11,7 +12,10 @@ function App() {
         <Header />
         <main className="flex-grow bg-dark">
           <div className="mx-auto">
-            <Home />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/projects" element={<Projects />} />
+            </Routes>
           </div>
         </main>
         <Footer />

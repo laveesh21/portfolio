@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { portfolioContent } from '../../portfolioContent';
 import { FaHome, FaUser, FaCode, FaBriefcase, FaEnvelope } from 'react-icons/fa';
 
-const { name, navLinks, mobileMenuButton, mobileMenuIcon } = portfolioContent.header;
+const { name, navLinks } = portfolioContent.header;
 
 // Assuming the first navLink is always the 'home' link with the main name
 const homeLink = navLinks.find(link => link.id === 'home') || navLinks[0]; 
@@ -13,11 +14,11 @@ const otherNavLinks = navLinks.filter(link => link.id !== 'home');
 // Function to get the appropriate icon component
 const getIcon = (id: string) => {
   switch (id) {
-    case 'home': return <FaHome className="text-sm" />;
-    case 'about': return <FaUser className="text-sm" />;
-    case 'projects': return <FaCode className="text-sm" />;
-    case 'experience': return <FaBriefcase className="text-sm" />;
-    case 'contact': return <FaEnvelope className="text-sm" />;
+    case 'home': return <FaHome className="text-xs md:text-sm" />;
+    case 'about': return <FaUser className="text-xs md:text-sm" />;
+    case 'projects': return <FaCode className="text-xs md:text-sm" />;
+    case 'experience': return <FaBriefcase className="text-xs md:text-sm" />;
+    case 'contact': return <FaEnvelope className="text-xs md:text-sm" />;
     default: return null;
   }
 };
@@ -27,13 +28,13 @@ const NavLinkComponent = ({ id, href, children, isActive, onClick }: { id: strin
     id={`nav-link-${id}`}
     href={href} 
     onClick={onClick}
-    className={`flex items-center space-x-1 px-3 py-1.5 text-sm font-medium relative z-10
+    className={`flex items-center space-x-1 px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm font-medium relative z-10
                 transition-all duration-200 ease-out
                 ${isActive 
                   ? 'text-white' 
                   : 'text-white/60 hover:text-white/80'}`}
   >
-    <span className="flex items-center justify-center w-4 h-4 mr-1">{getIcon(id)}</span>
+    <span className="flex items-center justify-center w-3 h-3 md:w-4 md:h-4 mr-0.5 md:mr-1">{getIcon(id)}</span>
     <span>{children}</span>
     {/* Tube light effect - always present but with opacity transition */}
     <div className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/3 h-[2px] transition-opacity duration-300 ease-out ${isActive ? 'opacity-100' : 'opacity-0'}`}>
@@ -49,6 +50,7 @@ const NavLinkComponent = ({ id, href, children, isActive, onClick }: { id: strin
 );
 
 const Header = () => {
+  const location = useLocation();
   const [activeLink, setActiveLink] = useState(homeLink.id);
   const [glowPosition, setGlowPosition] = useState({ left: 0, width: 0 });
   const [indicatorStyle, setIndicatorStyle] = useState({
@@ -57,10 +59,51 @@ const Header = () => {
     opacity: 0
   });
   const [isNavigating, setIsNavigating] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  
+  // Hide header on projects page
+  if (location.pathname === '/projects') {
+    return null;
+  }
+  
+  // Handle scroll to show/hide header (only on mobile)
+  useEffect(() => {
+    const handleScroll = () => {
+      // Only apply auto-hide on mobile devices (screen width < 768px)
+      const isMobile = window.innerWidth < 768;
+      
+      if (!isMobile) {
+        setIsHeaderVisible(true);
+        return;
+      }
+      
+      const currentScrollY = window.scrollY;
+      
+      // Show header when scrolling up or at the top
+      if (currentScrollY < lastScrollY || currentScrollY < 10) {
+        setIsHeaderVisible(true);
+      } 
+      // Hide header when scrolling down
+      else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHeaderVisible(false);
+        setIsMobileMenuOpen(false); // Close mobile menu when hiding
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
   
   // Handle clicking on navigation items
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    
+    // Close mobile menu
+    setIsMobileMenuOpen(false);
     
     // Set active link immediately so the indicator moves right away
     setActiveLink(id);
@@ -203,30 +246,40 @@ const Header = () => {
       </div>
       
       {/* Animation is handled via CSS classes in the global stylesheet */}
-      <header className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-auto">
-        <div className="bg-black rounded px-1 py-1 shadow-[0_0_10px_rgba(0,0,0,0.5)] border-b border-white/5 relative">
-          {/* Sliding indicator */}
+      <header className={`fixed top-2 md:top-4 left-1/2 transform -translate-x-1/2 z-50 w-auto max-w-[95vw] transition-transform duration-300 ease-in-out ${
+        isHeaderVisible ? 'translate-y-0' : '-translate-y-24'
+      }`}>
+        <div className="bg-black rounded px-1 py-0.5 md:py-1 shadow-[0_0_10px_rgba(0,0,0,0.5)] border-b border-white/5 relative">
+          {/* Sliding indicator - hidden on mobile */}
           <div 
-            className="absolute top-0 h-full bg-gradient-to-r from-white/15 via-white/20 to-white/15 rounded transition-all duration-300 ease-out shadow-[0_0_8px_rgba(255,255,255,0.15)] border border-white/15" 
+            className="hidden md:block absolute top-0 h-full bg-gradient-to-r from-white/15 via-white/20 to-white/15 rounded transition-all duration-300 ease-out shadow-[0_0_8px_rgba(255,255,255,0.15)] border border-white/15" 
             style={{
               left: `${indicatorStyle.left}px`,
               width: `${indicatorStyle.width}px`,
               opacity: indicatorStyle.opacity,
             }}
           />
-          <div className="flex items-center justify-between space-x-4 relative z-10">
-            {/* Home/Name link */}
-            <NavLinkComponent 
-              id={homeLink.id}
-              href={`#${homeLink.id}`}
-              isActive={activeLink === homeLink.id}
-              onClick={(e) => handleNavClick(e, homeLink.id)}
-            >
-              {name}
-            </NavLinkComponent>
+          <div className="flex items-center justify-between space-x-2 md:space-x-4 relative z-10">
+            {/* Active tab name on mobile, Laveesh Tomar on desktop */}
+            <div className="md:hidden flex items-center gap-2 px-2 py-1 text-sm font-medium text-white">
+              <span className="flex items-center justify-center w-4 h-4">{getIcon(activeLink)}</span>
+              <span>{navLinks.find(link => link.id === activeLink)?.label || 'Home'}</span>
+            </div>
+            
+            {/* Desktop Home/Name link */}
+            <div className="hidden md:block">
+              <NavLinkComponent 
+                id={homeLink.id}
+                href={`#${homeLink.id}`}
+                isActive={activeLink === homeLink.id}
+                onClick={(e) => handleNavClick(e, homeLink.id)}
+              >
+                {name}
+              </NavLinkComponent>
+            </div>
 
-            {/* Navigation links */}
-            <nav className="flex space-x-1">
+            {/* Navigation links - hidden on mobile */}
+            <nav className="hidden md:flex space-x-1">
               {otherNavLinks.map((link) => (
                 <NavLinkComponent
                   key={link.id}
@@ -241,12 +294,43 @@ const Header = () => {
             </nav>
 
             {/* Mobile menu button */}
-            <button className="md:hidden text-white/70 hover:text-white focus:outline-none">
-              <span className="sr-only">{mobileMenuButton}</span>
-              <span>{mobileMenuIcon}</span>
+            <button 
+              className="md:hidden text-white/70 hover:text-white focus:outline-none p-1.5"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {isMobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
             </button>
           </div>
         </div>
+        
+        {/* Mobile Menu Dropdown - More Compact */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 mt-1 bg-black/95 backdrop-blur-lg rounded-lg border border-white/10 shadow-xl overflow-hidden">
+            <nav className="flex flex-col py-1">
+              {navLinks.map((link) => (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={(e) => handleNavClick(e, link.id)}
+                  className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-all duration-200
+                    ${activeLink === link.id 
+                      ? 'text-white bg-white/10 border-l-2 border-accent' 
+                      : 'text-white/70 hover:text-white hover:bg-white/5'}`}
+                >
+                  <span className="flex items-center justify-center w-4 h-4">{getIcon(link.id)}</span>
+                  <span>{link.label}</span>
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
       </header>
     </>
   );

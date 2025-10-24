@@ -9,5 +9,23 @@ export default defineConfig({
   },
   server: {
     allowedHosts: ['c518-103-117-22-35.ngrok-free.app']
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'animation': ['framer-motion'],
+          'icons': ['react-icons'],
+        }
+      }
+    },
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+    }
   }
 })

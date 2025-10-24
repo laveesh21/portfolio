@@ -1,8 +1,34 @@
 export const portfolioContent = {
+  faq: {
+    title: "Know More About Me",
+    questions: [
+      {
+        id: 1,
+        question: "What inspired you to become a developer?",
+        answer: "My journey into development started with a fascination for creating things. The ability to transform ideas into functional applications and solve real-world problems through code captured my interest, leading me to pursue this path professionally."
+      },
+      {
+        id: 2,
+        question: "What's your preferred tech stack and why?",
+        answer: "I particularly enjoy working with React, TypeScript, and Node.js. This stack offers great developer experience, strong typing, and excellent performance. The robust ecosystem and community support make it ideal for building modern web applications."
+      },
+      {
+        id: 3,
+        question: "How do you approach learning new technologies?",
+        answer: "I believe in hands-on learning. When exploring new technologies, I start with official documentation, build small projects, and gradually scale up to more complex applications. I also actively participate in tech communities and share knowledge with fellow developers."
+      },
+      {
+        id: 4,
+        question: "What's your favorite project you've worked on?",
+        answer: "One of my most rewarding projects was developing a real-time collaboration platform. It challenged me to deal with complex state management, WebSocket integration, and performance optimization, ultimately helping me grow as a developer."
+      }
+    ]
+  },
+
   header: {
     name: "Laveesh Tomar",
     navLinks: [
-      { id: 'home', href: '#hero', iconPlaceholder: '[H]', label: 'Knox' }, // Special case for home/name
+      { id: 'home', href: '#hero', iconPlaceholder: '[H]', label: 'Home' }, // Special case for home/name
       { id: 'about', href: '#about', iconPlaceholder: '[A]', label: 'About' },
       { id: 'projects', href: '#projects', iconPlaceholder: '[P]', label: 'Projects' },
       { id: 'experience', href: '#experience', iconPlaceholder: '[E]', label: 'Experience' },
@@ -11,12 +37,15 @@ export const portfolioContent = {
     mobileMenuButton: 'Open main menu',
     mobileMenuIcon: '☰'
   },
+
+
+
   hero: {
-    location: "Gurugram, Haryana",
+    location: "Roorkee, Uttarakhand",
     title: "Fullstack",
-    titleImage: "LaveeshProfile00.jpeg", // This will be a placeholder until you add an actual image
-    titleAfter: "Web Developer",
-    subtitle: "also a Gamer",
+    titleImage: "LaveeshProfile00.jpg", // This will be a placeholder until you add an actual image
+    titleAfter: "Software Developer",
+    subtitle: "& Indie game developer",
     ctaButtonText: "View My Work",
     stats: [
       {
@@ -33,20 +62,117 @@ export const portfolioContent = {
       }
     ]
   },
+
+
+
   about: {
     title: "About Me",
     titleHighlight: "Me",
     aboutImage: "LaveeshProfile00.jpeg",
     whoAmITitle: "Who I Am",
-    description1: "I'm a dedicated frontend web developer based in Roorkee, Uttarakhand, with over a year of professional experience building responsive and intuitive web applications.",
-    description2: "Specializing in React, TypeScript, and modern CSS frameworks like Tailwind, I focus on creating clean, maintainable code that delivers exceptional user experiences. I'm passionate about web accessibility and performance optimization.",
+    description1: "I am experienced in building dynamic, responsive web applications and professional exprerience as a backend developer. With a strong foundation in both frontend and backend technologies, I create seamless user experiences and robust server-side solutions.",
+    description2: "I have also worked with unity game development ",
     details: [
-      { label: "Location", value: "Gurugram, Haryana" },
+      { label: "Location", value: "Roorkee, Uttarakhand" },
       { label: "Email", value: "laveeshtomar2681@gmail.com" },
       { label: "Availability", value: "Open to opportunities" }
     ],
-    resumeButtonText: "Download Resume"
+    profilePic: "LaveeshProfile00.jpeg",
+    resumeButtonText: "Download Resume",
+    techStack: {
+      title: "Tech Stack",
+      titleHighlight: "Stack",
+      skills: [
+        {
+          name: "React",
+          logo: "/src/assets/tech-logos/react.svg",
+          category: "Frontend",
+          color: "text-blue-400",
+          bgColor: "bg-blue-400/10"
+        },
+        {
+          name: "JavaScript",
+          logo: "/src/assets/tech-logos/javascript.svg",
+          category: "Language",
+          color: "text-yellow-400",
+          bgColor: "bg-yellow-400/10"
+        },
+        {
+          name: "Tailwind CSS",
+          logo: "/src/assets/tech-logos/tailwindcss.svg",
+          category: "Frontend",
+          color: "text-cyan-400",
+          bgColor: "bg-cyan-400/10"
+        },
+        {
+          name: "Node.js",
+          logo: "/src/assets/tech-logos/nodejs.svg",
+          category: "Backend",
+          color: "text-green-400",
+          bgColor: "bg-green-400/10"
+        },
+        {
+          name: "SQL",
+          logo: "/src/assets/tech-logos/sql.svg",
+          category: "Backend",
+          color: "text-blue-500",
+          bgColor: "bg-blue-500/10"
+        },
+        {
+          name: "Java",
+          logo: "/src/assets/tech-logos/java.svg",
+          category: "Backend",
+          color: "text-orange-400",
+          bgColor: "bg-orange-400/10"
+        },
+        {
+          name: "TypeScript",
+          logo: "/src/assets/tech-logos/typescript.svg",
+          category: "Language",
+          color: "text-blue-500",
+          bgColor: "bg-blue-500/10"
+        },
+        {
+          name: "MongoDB",
+          logo: "/src/assets/tech-logos/mongodb.svg",
+          category: "Database",
+          color: "text-green-500",
+          bgColor: "bg-green-500/10"
+        },
+        {
+          name: "Firebase",
+          logo: "/src/assets/tech-logos/firebase.svg",
+          category: "Backend",
+          color: "text-orange-400",
+          bgColor: "bg-orange-400/10"
+        },
+        {
+          name: "AWS",
+          logo: "/src/assets/tech-logos/aws.svg",
+          category: "Cloud",
+          color: "text-yellow-500",
+          bgColor: "bg-yellow-500/10"
+        },
+        {
+          name: "Git",
+          logo: "/src/assets/tech-logos/git.svg",
+          category: "Tool",
+          color: "text-gray-400",
+          bgColor: "bg-gray-400/10"
+        }
+        ,{
+          name: "Linux",
+          logo: "/src/assets/tech-logos/linux.svg",
+          category: "Tool",
+          color: "text-yellow-300",
+          bgColor: "bg-yellow-300/10"
+        }
+      ]
+    }
   },
+
+
+
   projects: {
     title: "My Projects",
     titleHighlight: "Projects",
@@ -81,33 +207,38 @@ export const portfolioContent = {
       }
     ]
   },
+
+
+  
   experience: {
     title: "Work Experience",
-    titleHighlight: "Experience",
+    titleHighlight: "EXPERIENCE",
     experienceItems: [
       {
         id: 1,
-        jobTitle: "Frontend Web Developer",
-        company: "TechSolutions Inc.",
-        duration: "2024 - Present",
-        description: "Develop and maintain responsive web applications using React and TypeScript. Collaborate with designers and backend developers to implement user interfaces and integrate APIs. Optimize website performance and ensure cross-browser compatibility."
-      },
-      {
-        id: 2,
         jobTitle: "Web Development Intern",
-        company: "Digital Innovations",
-        duration: "2023 - 2024",
-        description: "Assisted in building and maintaining client websites using HTML, CSS, and JavaScript. Gained hands-on experience with React and modern frontend frameworks. Participated in code reviews and implemented feedback from senior developers."
+        company: "Kindlife",
+        duration: "Sep 2024 - Sep 2025",
+        description: [
+          "As a backend developer intern at Kindlife (a growing e-commerce platform), I've worked across multiple critical backend systems — from core business logic to third-party integrations.",
+          "My work includes building new features, fixing bugs that directly impact business performance, and optimizing backend performance across the board.",
+          "<b>Tech Used</b>: PHP, Javascript, MySQL, Redis, CS-Cart, Smarty, AJAX, Rest APIs, Git, SVN",
+        ],
+        points: [
+          "Integrated EKART logistics API into the platform backend, improving shipment tracking and delivery efficiency.",
+          "Collaborated on GoKwik payment flow fixes, reducing failures and improving conversion",
+          "Built and maintained REST APIs to support internal operations and external tools",
+          "Worked extensively with SQL query optimization, reducing redundant calls and improving performance",
+          "Fixed and improved AJAX-based logic in CS-Cart using Smarty, increasing responsiveness and code clarity",
+          "Proactively identified and fixed issues in coupon systems, improving user experience and revenue impact",
+          "Learned and applied principles of clean architecture, DRY code, and collaborative development under guidance from senior engineers",
+        ]
       },
-      {
-        id: 3,
-        jobTitle: "Freelance Web Developer",
-        company: "Self-employed",
-        duration: "2022 - 2023",
-        description: "Designed and developed custom websites for small businesses and individuals. Implemented responsive designs and ensured accessibility compliance. Managed client relationships and delivered projects on schedule."
-      }
     ]
   },
+
+
+  
   contact: {
     title: "Get In Touch",
     titleHighlight: "Touch",
@@ -120,7 +251,7 @@ export const portfolioContent = {
     },
     contactInfo: [
       { type: "Email", value: "laveeshtomar.royalking@gmail.com" },
-      { type: "Location", value: "Gurugram, Haryana, India" },
+      { type: "Location", value: "Roorkee, Uttarakhand, India" },
       { type: "Availability", value: "Weekdays 9AM - 6PM IST" }
     ],
     submitButtonText: "Send Message"
