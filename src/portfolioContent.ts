@@ -1,3 +1,17 @@
+import {
+  reactLogo,
+  javascriptLogo,
+  nodejsLogo,
+  sqlLogo,
+  javaLogo,
+  typescriptLogo,
+  mongodbLogo,
+  firebaseLogo,
+  awsLogo,
+  gitLogo,
+  linuxLogo
+} from './assets/tech-logos';
+
 export const portfolioContent = {
   faq: {
     title: "Know More About Me",
@@ -85,84 +99,77 @@ export const portfolioContent = {
       skills: [
         {
           name: "React",
-          logo: "/src/assets/tech-logos/react.svg",
+          logo: reactLogo,
           category: "Frontend",
           color: "text-blue-400",
           bgColor: "bg-blue-400/10"
         },
         {
           name: "JavaScript",
-          logo: "/src/assets/tech-logos/javascript.svg",
+          logo: javascriptLogo,
           category: "Language",
           color: "text-yellow-400",
           bgColor: "bg-yellow-400/10"
         },
         {
-          name: "Tailwind CSS",
-          logo: "/src/assets/tech-logos/tailwindcss.svg",
-          category: "Frontend",
-          color: "text-cyan-400",
-          bgColor: "bg-cyan-400/10"
-        },
-        {
           name: "Node.js",
-          logo: "/src/assets/tech-logos/nodejs.svg",
+          logo: nodejsLogo,
           category: "Backend",
           color: "text-green-400",
           bgColor: "bg-green-400/10"
         },
         {
           name: "SQL",
-          logo: "/src/assets/tech-logos/sql.svg",
+          logo: sqlLogo,
           category: "Backend",
           color: "text-blue-500",
           bgColor: "bg-blue-500/10"
         },
         {
           name: "Java",
-          logo: "/src/assets/tech-logos/java.svg",
+          logo: javaLogo,
           category: "Backend",
           color: "text-orange-400",
           bgColor: "bg-orange-400/10"
         },
         {
           name: "TypeScript",
-          logo: "/src/assets/tech-logos/typescript.svg",
+          logo: typescriptLogo,
           category: "Language",
           color: "text-blue-500",
           bgColor: "bg-blue-500/10"
         },
         {
           name: "MongoDB",
-          logo: "/src/assets/tech-logos/mongodb.svg",
+          logo: mongodbLogo,
           category: "Database",
           color: "text-green-500",
           bgColor: "bg-green-500/10"
         },
         {
           name: "Firebase",
-          logo: "/src/assets/tech-logos/firebase.svg",
+          logo: firebaseLogo,
           category: "Backend",
           color: "text-orange-400",
           bgColor: "bg-orange-400/10"
         },
         {
           name: "AWS",
-          logo: "/src/assets/tech-logos/aws.svg",
+          logo: awsLogo,
           category: "Cloud",
           color: "text-yellow-500",
           bgColor: "bg-yellow-500/10"
         },
         {
           name: "Git",
-          logo: "/src/assets/tech-logos/git.svg",
+          logo: gitLogo,
           category: "Tool",
           color: "text-gray-400",
           bgColor: "bg-gray-400/10"
         }
         ,{
           name: "Linux",
-          logo: "/src/assets/tech-logos/linux.svg",
+          logo: linuxLogo,
           category: "Tool",
           color: "text-yellow-300",
           bgColor: "bg-yellow-300/10"

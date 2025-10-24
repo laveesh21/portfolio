@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { portfolioContent } from '../../portfolioContent';
+import aboutImage from '../../assets/images/laveeshtomar.jpeg';
 
 // Add keyframe animations
 const styles = `
@@ -193,7 +194,7 @@ const About: React.FC = () => {
                 {/* Image with continuous animation */}
                 <div className="relative w-full h-full animate-on-hover">
                   <img 
-                    src="/src/assets/images/laveeshtomar.jpeg"
+                    src={aboutImage}
                     alt="Laveesh Tomar"
                     className="w-full h-full object-cover object-center"
                   />
