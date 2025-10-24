@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { portfolioContent } from '../../portfolioContent';
 import aboutImage from '../../assets/images/laveeshtomar.jpeg';
+import resumePdf from '../../assets/pdf/LaveeshTomar_WebDev_CV_v2_pdf.pdf';
 
 // Add keyframe animations
 const styles = `
@@ -279,9 +280,9 @@ const About: React.FC = () => {
 
                 {/* Resume Button */}
                 <div className="mt-8 md:mt-10 lg:mt-12 flex justify-center lg:justify-start">
-                  <a 
-                    href="/src/assets/pdf/LaveeshTomar_WebDev_CV_v2.pdf" 
-                    download="LaveeshTomar_CV.pdf"
+          <a 
+            href={resumePdf}
+            download="LaveeshTomar_CV.pdf"
                     className="group relative inline-flex px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-blue-600 to-blue-400 rounded-xl text-white font-medium text-base md:text-lg hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300"
                   >
                     <span className="relative z-10 flex items-center gap-2 md:gap-3">
